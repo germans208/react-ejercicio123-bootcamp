@@ -1,8 +1,10 @@
-import React from 'react'
+import React, { useState } from 'react'
 import PropTypes from 'prop-types'
 import { Contact } from '../models/contact.class'
 
 const ComponentB = ({ contact }) => {
+    const [connected, setConnected] = useState(contact.connected);
+
     return (
         <div>
             <div>
@@ -16,6 +18,7 @@ const ComponentB = ({ contact }) => {
             </div>
             <h2>
                 {(contact.connected) ? `Contacto En Línea` : `Contacto No Disponible`}
+                <button onClick={() => setConnected(!connected)}>{connected === false ? 'Conectado' : 'Desconectado'}</button>
             </h2>
         </div>
     )
